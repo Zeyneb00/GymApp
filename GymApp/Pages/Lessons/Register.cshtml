@@ -1,0 +1,16 @@
+﻿@page "{id:int}"
+@model GymApp.Pages.Lessons.RegisterModel
+
+<h2>Register to @Model.Lesson.Name</h2>
+
+<p>Instructor: @Model.Lesson.InstructorName</p>
+<p>Day: @Model.Lesson.DayOfWeek</p>
+<p>Time: @Model.Lesson.Time</p>
+<p>Capacity: @Model.Lesson.Registrations.Count / @Model.Lesson.MaxCapacity</p>
+
+<form method="post">
+    <button class="btn btn-success">Confirm Registration</button>
+    <a class="btn btn-secondary" asp-page="/Lessons/List" asp-route-id="@Model.Lesson.CategoryId">
+        Cancel
+    </a>
+</form>

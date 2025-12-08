@@ -16,5 +16,6 @@ namespace GymApp.Data
         public DbSet<LessonRegistration> LessonRegistrations { get; set; }
         public DbSet<GroupLesson> GroupLessons { get; set; }
 
+
     }
 }

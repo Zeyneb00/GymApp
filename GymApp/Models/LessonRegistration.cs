@@ -9,5 +9,7 @@
 
         public int GroupLessonId { get; set; }
         public GroupLesson? GroupLesson { get; set; }
+
+        public DateTime RegisteredAt { get; set; } = DateTime.Now;
     }
 }

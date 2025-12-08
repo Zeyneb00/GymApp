@@ -35,8 +35,8 @@ namespace GymApp
                         InstructorName = "Ayşe Demir",
                         StudioLocation = "Studio A",
                         MaxCapacity = 20,
-                        CurrentEnrollment = 10,
-                        LessonTime = DateTime.Today.AddHours(18),
+                        DayOfWeek = DayOfWeek.Monday,
+                        Time = new TimeSpan(18, 0, 0),
                         CategoryId = cardioCat.Id
                     },
                     new GroupLesson
@@ -45,8 +45,8 @@ namespace GymApp
                         InstructorName = "Ali Yılmaz",
                         StudioLocation = "Studio C",
                         MaxCapacity = 15,
-                        CurrentEnrollment = 7,
-                        LessonTime = DateTime.Today.AddHours(17),
+                        DayOfWeek = DayOfWeek.Tuesday,
+                        Time = new TimeSpan(17, 0, 0),
                         CategoryId = strengthCat.Id
                     },
                     new GroupLesson
@@ -55,8 +55,8 @@ namespace GymApp
                         InstructorName = "Esra Kaya",
                         StudioLocation = "Studio B",
                         MaxCapacity = 20,
-                        CurrentEnrollment = 5,
-                        LessonTime = DateTime.Today.AddHours(16),
+                        DayOfWeek = DayOfWeek.Wednesday,
+                        Time = new TimeSpan(16, 0, 0),
                         CategoryId = flexCat.Id
                     }
                 );

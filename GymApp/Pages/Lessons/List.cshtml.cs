@@ -31,9 +31,11 @@ namespace GymApp.Pages.Lessons
 
             // Load lessons in this category
             Lessons = await _context.GroupLessons
-                .Where(l => l.CategoryId == id)
-                .OrderBy(l => l.LessonTime)
-                .ToListAsync();
+            .Where(l => l.CategoryId == id)
+            .OrderBy(l => l.DayOfWeek)
+            .ThenBy(l => l.Time)
+            .ToListAsync();
+
 
 
             return Page();
