@@ -1,0 +1,21 @@
+﻿@page
+@model LoginModel
+@{
+	ViewData["Title"] = "Login";
+}
+
+<h2>Login</h2>
+<form method="post" class="form-group">
+    <div class="mb-3">
+        <label asp-for="TcNumber" class="form-label">T.C. Number</label>
+        <input asp-for="TcNumber" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label">Password</label>
+        <input asp-for="Password" type="password" class="form-control" />
+    </div>
+    <div class="mb-3 text-danger">
+        @Model.ErrorMessage
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>

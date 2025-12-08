@@ -1,0 +1,45 @@
+﻿@page "{id:int}"
+@model GymApp.Pages.Lessons.ListModel
+
+<h2>@Model.Category.Name Lessons</h2>
+<p class="text-muted">@Model.Category.Description</p>
+
+@if (!Model.Lessons.Any())
+{
+    <p>No lessons found for this category.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Lesson</th>
+                <th>Instructor</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Capacity</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var lesson in Model.Lessons)
+            {
+                <tr>
+                    <td>@lesson.Name</td>
+                    <td>@lesson.InstructorName</td>
+                    <td>@lesson.LessonTime.ToShortDateString()</td>
+                    <td>@lesson.LessonTime.ToShortTimeString()</td>
+                    <td>@lesson.CurrentEnrollment / @lesson.MaxCapacity</td>
+
+                    <td>
+                        <a class="btn btn-primary btn-sm"
+                           asp-page="/Lessons/Register"
+                           asp-route-id="@lesson.Id">
+                            Register
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

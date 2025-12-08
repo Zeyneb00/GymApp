@@ -1,0 +1,26 @@
+﻿@page
+@model GymApp.Pages.Lessons.CatalogModel
+@{
+	ViewData["Title"] = "Group Lessons Catalog";
+}
+
+<h2>Group Lessons Catalog</h2>
+
+@if (!Model.Categories.Any())
+{
+    <p>No categories found.</p>
+}
+else
+{
+    <div class="list-group">
+        @foreach (var cat in Model.Categories)
+        {
+            <a class="list-group-item list-group-item-action"
+               asp-page="/Lessons/List"
+               asp-route-id="@cat.Id">
+                <strong>@cat.Name</strong>
+                <div class="small">@cat.Description</div>
+            </a>
+        }
+    </div>
+}

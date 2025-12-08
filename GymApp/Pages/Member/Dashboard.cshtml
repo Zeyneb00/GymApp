@@ -1,0 +1,30 @@
+﻿@page
+@model Pages.Member.DashboardModel
+@{
+    ViewData["Title"] = "Member Dashboard";
+}
+
+<h2>Member Dashboard</h2>
+
+@if (Model.Member == null)
+{
+    <p>You are not logged in. <a asp-page="/Login">Login</a></p>
+}
+else
+{
+    <div>
+        <p><strong>Name:</strong> @Model.Member.FirstName @Model.Member.LastName</p>
+        <p><strong>Membership:</strong> @Model.Member.MembershipPackage</p>
+        <p><strong>Membership End:</strong> @Model.Member.MembershipEndDate.ToShortDateString()</p>
+    </div>
+
+    <h3>Your Group Lessons</h3>
+    @* For now we don't have a LessonRegistration model, so show a placeholder *@
+    <p>If you register for lessons, they will appear here.</p>
+
+    <p><a asp-page="/Lessons/Catalog">View Group Lessons</a></p>
+
+    <form method="post" asp-page-handler="Logout">
+        <button type="submit" class="btn btn-outline-secondary">Logout</button>
+    </form>
+}
