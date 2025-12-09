@@ -1,0 +1,31 @@
+﻿@page
+@model GymApp.Pages.Admin.Categories.IndexModel
+
+<h2>Group Lesson Categories</h2>
+
+<p>
+    <a class="btn btn-success" asp-page="Create">Create New Category</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cat in Model.Categories)
+        {
+            <tr>
+                <td>@cat.Name</td>
+                <td>@cat.Description</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" asp-page="Edit" asp-route-id="@cat.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-page="Delete" asp-route-id="@cat.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

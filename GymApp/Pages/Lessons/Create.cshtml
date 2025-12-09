@@ -1,0 +1,49 @@
+﻿@page
+@model GymApp.Pages.Admin.Lessons.CreateModel
+
+<h2>Create New Lesson</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label class="form-label">Lesson Name</label>
+        <input asp-for="Lesson.Name" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Instructor</label>
+        <input asp-for="Lesson.InstructorName" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Studio Location</label>
+        <input asp-for="Lesson.StudioLocation" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Day of Week</label>
+        <select asp-for="Lesson.DayOfWeek" class="form-select">
+            @foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
+            {
+                <option value="@day">@day</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Time</label>
+        <input asp-for="Lesson.Time" type="time" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Max Capacity</label>
+        <input asp-for="Lesson.MaxCapacity" type="number" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Category</label>
+        <select asp-for="Lesson.CategoryId" asp-items="Model.CategoryOptions" class="form-select"></select>
+    </div>
+
+    <button class="btn btn-success">Create</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+</form>

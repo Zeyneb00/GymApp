@@ -1,0 +1,41 @@
+﻿@page
+@model GymApp.Pages.Admin.Lessons.IndexModel
+
+<h2>Manage Lessons</h2>
+
+<p>
+    <a class="btn btn-primary" asp-page="Create">+ Create New Lesson</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Category</th>
+            <th>Capacity</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lesson in Model.Lessons)
+        {
+            <tr>
+                <td>@lesson.Name</td>
+                <td>@lesson.DayOfWeek</td>
+                <td>@lesson.Time</td>
+                <td>@lesson.Category?.Name</td>
+                <td>@lesson.MaxCapacity</td>
+
+                <td>
+                    <a class="btn btn-warning btn-sm"
+                       asp-page="Edit" asp-route-id="@lesson.Id">Edit</a>
+
+                    <a class="btn btn-danger btn-sm"
+                       asp-page="Delete" asp-route-id="@lesson.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

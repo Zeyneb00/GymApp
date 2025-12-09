@@ -1,0 +1,35 @@
+﻿@page
+@model GymApp.Pages.Admin.Members.IndexModel
+
+<h2>Members</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>T.C.</th>
+            <th>Package</th>
+            <th>Membership End</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var m in Model.Members)
+        {
+            <tr>
+                <td>@m.FirstName @m.LastName</td>
+                <td>@m.TcNumber</td>
+                <td>@m.MembershipPackage</td>
+                <td>@m.MembershipEndDate.ToShortDateString()</td>
+                <td>
+                    <a class="btn btn-primary btn-sm"
+                       asp-page="/Admin/Members/Details"
+                       asp-route-id="@m.Id">
+                        Details
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

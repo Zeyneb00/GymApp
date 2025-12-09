@@ -1,0 +1,52 @@
+﻿@page "{id:int}"
+@model GymApp.Pages.Admin.Lessons.EditModel
+@{
+    ViewData["Title"] = "Edit Lesson";
+}
+
+<h2>Edit Lesson</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label>Name</label>
+        <input asp-for="Lesson.Name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Category</label>
+        <select asp-for="Lesson.CategoryId"
+                asp-items="Model.CategoryList"
+                class="form-control"></select>
+    </div>
+
+    <div class="form-group">
+        <label>Day of Week</label>
+        <select asp-for="Lesson.DayOfWeek"
+                asp-items="Model.DaysOfWeek"
+                class="form-control"></select>
+    </div>
+
+    <div class="form-group">
+        <label>Time</label>
+        <input asp-for="Lesson.Time" type="time" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Instructor</label>
+        <input asp-for="Lesson.InstructorName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Studio Location</label>
+        <input asp-for="Lesson.StudioLocation" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Max Capacity</label>
+        <input asp-for="Lesson.MaxCapacity" type="number" class="form-control" />
+    </div>
+
+    <button class="btn btn-primary mt-3">Save Changes</button>
+    <a class="btn btn-secondary mt-3"
+       asp-page="./Index">Cancel</a>
+</form>

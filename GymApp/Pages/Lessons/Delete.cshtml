@@ -1,0 +1,40 @@
+﻿@page "{id:int}"
+@model GymApp.Pages.Admin.Lessons.DeleteModel
+
+<h2>Delete Lesson</h2>
+
+<div class="alert alert-danger">
+    Are you sure you want to delete this lesson?
+</div>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <td>@Model.Lesson.Name</td>
+    </tr>
+    <tr>
+        <th>Category</th>
+        <td>@Model.Lesson.Category?.Name</td>
+    </tr>
+    <tr>
+        <th>Instructor</th>
+        <td>@Model.Lesson.InstructorName</td>
+    </tr>
+    <tr>
+        <th>Day</th>
+        <td>@Model.Lesson.DayOfWeek</td>
+    </tr>
+    <tr>
+        <th>Time</th>
+        <td>@Model.Lesson.Time</td>
+    </tr>
+    <tr>
+        <th>Studio</th>
+        <td>@Model.Lesson.StudioLocation</td>
+    </tr>
+</table>
+
+<form method="post">
+    <button class="btn btn-danger">Yes, Delete</button>
+    <a class="btn btn-secondary" asp-page="./Index">Cancel</a>
+</form>
