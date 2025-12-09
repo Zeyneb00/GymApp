@@ -6,6 +6,14 @@
 
 <h2>Member Dashboard</h2>
 
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+
 @if (Model.Member == null)
 {
     <p>You are not logged in. <a asp-page="/Login">Login</a></p>
@@ -19,10 +27,48 @@ else
     </div>
 
     <h3>Your Group Lessons</h3>
-    @* For now we don't have a LessonRegistration model, so show a placeholder *@
-    <p>If you register for lessons, they will appear here.</p>
 
-    <p><a asp-page="/Lessons/Catalog">View Group Lessons</a></p>
+    @if (Model.Member.Registrations == null || !Model.Member.Registrations.Any())
+    {
+        <p>You are not registered for any lessons.</p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Lesson</th>
+                    <th>Day</th>
+                    <th>Time</th>
+                    <th>Instructor</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var reg in Model.Member.Registrations)
+                {
+                    <tr>
+                        <td>@reg.GroupLesson.Name</td>
+                        <td>@reg.GroupLesson.DayOfWeek</td>
+                        <td>@reg.GroupLesson.Time.ToString(@"hh\:mm")</td>
+                        <td>@reg.GroupLesson.InstructorName</td>
+                        <td>
+                            <a class="btn btn-danger btn-sm"
+                               asp-page="/Lessons/Cancel"
+                               asp-route-id="@reg.Id">
+                                Cancel
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    }
+
+
+    <p><a class="btn btn-primary" asp-page="/Lessons/Catalog">Browse Group Lessons</a></p>
+
 
     <form method="post" asp-page-handler="Logout">
         <button type="submit" class="btn btn-outline-secondary">Logout</button>

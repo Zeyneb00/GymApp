@@ -51,8 +51,10 @@ namespace GymApp.Pages.Lessons
                 .AnyAsync(r => r.MemberId == memberId && r.GroupLessonId == id);
 
             if (already)
-                return Content("You are already registered!");
-
+            { 
+                TempData["ErrorMessage"] = "You are already registered for this lesson.";
+                return RedirectToPage("/Member/Dashboard");
+            }   
             // Create registration
             var reg = new LessonRegistration
             {

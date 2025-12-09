@@ -1,0 +1,11 @@
+﻿@page "{id:int}"
+@model GymApp.Pages.Lessons.CancelModel
+
+<h2>Cancel Registration</h2>
+
+<p>Are you sure you want to cancel this lesson?</p>
+
+<form method="post">
+    <button class="btn btn-danger">Confirm</button>
+    <a class="btn btn-secondary" asp-page="/Member/Dashboard">Back</a>
+</form>

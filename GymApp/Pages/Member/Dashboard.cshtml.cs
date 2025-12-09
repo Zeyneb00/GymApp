@@ -2,6 +2,7 @@ using GymApp.Data;
 using GymApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using MemberModel = GymApp.Models.Member;
 
 namespace GymApp.Pages.Member
@@ -16,26 +17,32 @@ namespace GymApp.Pages.Member
         }
 
         public MemberModel Member { get; set; }
+        public List<GroupLesson> MyLessons { get; set; } = new();
 
         public IActionResult OnGet()
         {
             var memberId = HttpContext.Session.GetInt32("MemberId");
             if (!memberId.HasValue)
             {
-                // not logged in
                 return RedirectToPage("/Login");
             }
 
-            Member = _context.Members.Find(memberId.Value);
+            Member = _context.Members
+            .Include(m => m.Registrations)
+                .ThenInclude(r => r.GroupLesson)
+                    .ThenInclude(gl => gl.Registrations)
+            .FirstOrDefault(m => m.Id == memberId.Value);
+
+
             if (Member == null)
             {
-                // session contained invalid id — clear session and ask to login
                 HttpContext.Session.Remove("MemberId");
                 return RedirectToPage("/Login");
             }
 
             return Page();
         }
+
 
         public IActionResult OnPostLogout()
         {
