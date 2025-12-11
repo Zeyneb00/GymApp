@@ -3,9 +3,18 @@
 
 <h2>Cancel Registration</h2>
 
-<p>Are you sure you want to cancel this lesson?</p>
+<p>Are you sure you want to cancel your registration for:</p>
+
+<div class="alert alert-warning">
+    <strong>@Model.Registration.GroupLesson.Name</strong><br />
+    @Model.Registration.GroupLesson.InstructorName <br />
+    @Model.Registration.GroupLesson.DayOfWeek @Model.Registration.GroupLesson.Time
+</div>
 
 <form method="post">
-    <button class="btn btn-danger">Confirm</button>
-    <a class="btn btn-secondary" asp-page="/Member/Dashboard">Back</a>
+    <button class="btn btn-danger">Confirm Cancel</button>
+    <a class="btn btn-secondary"
+       asp-page="/Member/Dashboard">
+        Go Back
+    </a>
 </form>

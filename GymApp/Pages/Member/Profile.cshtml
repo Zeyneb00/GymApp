@@ -1,0 +1,22 @@
+﻿@page
+@model GymApp.Pages.Member.ProfileModel
+
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<div class="container mt-4">
+
+    <h2 class="fw-bold">My Profile</h2>
+    <hr />
+
+    <div class="card shadow-sm p-4" style="max-width: 600px;">
+        <p><strong>First Name:</strong> @Model.Member.FirstName</p>
+        <p><strong>Last Name:</strong> @Model.Member.LastName</p>
+        <p><strong>T.C. Number:</strong> @Model.Member.TcNumber</p>
+        <p><strong>Membership Package:</strong> @Model.Member.MembershipPackage</p>
+        <p><strong>Membership End Date:</strong> @Model.Member.MembershipEndDate.ToShortDateString()</p>
+
+        <a asp-page="/Member/Dashboard" class="btn btn-primary mt-3">← Back to Dashboard</a>
+    </div>
+</div>
